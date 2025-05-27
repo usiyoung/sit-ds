@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import {Button, Checkbox, Dropdown, FormTextField, Icon, Select, Text, TextField} from 'sit-ui';
 import {PLACEMENT} from 'sit-ui/ui/Dropdown';
+import type {OptionType} from "sit-ui/ui/Select";
 
 import {colors, typography, type Typography} from 'sit-ui/tokens';
 
@@ -131,7 +132,7 @@ const SelectComponent = () => {
     return (
         <Wrapper>
             <Label title={'Select'}/>
-            <Select options={options} onChange={(value: string) => console.log(value)}/>
+            <Select options={options} onChange={(value: OptionType) => console.log(value)}/>
         </Wrapper>
     );
 };
