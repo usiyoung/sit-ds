@@ -1,35 +1,52 @@
 import styled from 'styled-components';
 
-import { Button, Checkbox, Dropdown, FormTextField, Icon, Select, Text, TextField } from 'sit-ui';
-import { PLACEMENT } from 'sit-ui/ui/Dropdown';
+import {Button, Checkbox, Dropdown, FormTextField, Icon, Select, Text, TextField} from 'sit-ui';
+import {PLACEMENT} from 'sit-ui/ui/Dropdown';
 
-import { colors, typography, type Typography } from 'sit-ui/tokens';
+import {colors, typography, type Typography} from 'sit-ui/tokens';
 
 
 function App() {
     return (
         <Container>
-            <Text typography={'title2'} color={'purple1'}>
-                SIT Design System
-            </Text>
-            <br /> <br />
+            <Title/>
 
-            <TextFieldComponent />
+            <TextFieldComponent/>
 
-            <SelectComponent />
+            <SelectComponent/>
 
-            <FormTextFieldComponent />
+            <FormTextFieldComponent/>
 
-            <DropdownComponent />
+            <DropdownComponent/>
 
-            <CheckboxComponent />
+            <CheckboxComponent/>
 
-            <ButtonComponent />
+            <ButtonComponent/>
 
-            <TextComponent />
+            <TextComponent/>
         </Container>
     );
 }
+
+const Title = () => {
+    return (
+        <TitleContainer>
+            <Icon name={'logoMitum'}/>
+
+            <Text typography={'title2'} color={'purple1'}>
+                SIT Design System
+            </Text>
+        </TitleContainer>
+    )
+}
+
+
+const TitleContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+`
 
 const Container = styled.div`
     width: 100%;
@@ -61,9 +78,9 @@ const Wrapper = styled.div`
     }
 `;
 
-const Label = ({ title }: { title: string }) => {
+const Label = ({title}: { title: string }) => {
     return (
-        <Text typography={'caption1'} color={'gray2'} style={{ flex: 0.3 }}>
+        <Text typography={'caption1'} color={'gray2'} style={{flex: 0.3}}>
             {title}
             <Responsive>Component</Responsive>
         </Text>
@@ -81,10 +98,10 @@ const TextComponent = () => {
 
     return (
         <Wrapper>
-            <Label title={'Text'} />
+            <Label title={'Text'}/>
             <div>
                 {textStyles.map(typo => (
-                    <Text style={{ marginRight: '3px' }} typography={typo} color={'gray1'} key={typo}>{typo}</Text>))}
+                    <Text style={{marginRight: '3px'}} typography={typo} color={'gray1'} key={typo}>{typo}</Text>))}
             </div>
         </Wrapper>
 
@@ -93,8 +110,8 @@ const TextComponent = () => {
 const TextFieldComponent = () => {
     return (
         <Wrapper>
-            <Label title={'TextField'} />
-            <TextField type={'password'} placeholder={'Password'} />
+            <Label title={'TextField'}/>
+            <TextField type={'password'} placeholder={'Password'}/>
         </Wrapper>
     );
 };
@@ -103,18 +120,18 @@ const SelectComponent = () => {
     const options = [
         {
             label: 'manager',
-            options: [{ value: 'Jack' }, { value: 'Lucky' }, { value: 'Tom' }],
+            options: [{value: 'Jack'}, {value: 'Lucky'}, {value: 'Tom'}],
         },
         {
             label: 'engineer',
-            options: [{ value: 'Han' }, { value: 'Yong' }, { value: 'Azy' }],
+            options: [{value: 'Han'}, {value: 'Yong'}, {value: 'Azy'}],
         },
     ];
 
     return (
         <Wrapper>
-            <Label title={'Select'} />
-            <Select options={options} onChange={(value: string) => console.log(value)} />
+            <Label title={'Select'}/>
+            <Select options={options} onChange={(value: string) => console.log(value)}/>
         </Wrapper>
     );
 };
@@ -122,9 +139,9 @@ const SelectComponent = () => {
 const FormTextFieldComponent = () => {
     return (
         <Wrapper>
-            <Label title={'FormTextField'} />
+            <Label title={'FormTextField'}/>
             <FormTextField
-                style={{ width: '100%' }}
+                style={{width: '100%'}}
                 label={(
                     <p>
                         Label <span>Placement</span>
@@ -134,7 +151,7 @@ const FormTextFieldComponent = () => {
                     (<Button
                         size={'xs'}
                         variant={'text'}
-                        icon={<Icon name={'addMini'} style={{ color: 'transparent' }} />}
+                        icon={<Icon name={'addMini'} style={{color: 'transparent'}}/>}
                     >
                         Action Button
                     </Button>)
@@ -142,7 +159,7 @@ const FormTextFieldComponent = () => {
                 helpText={'Error: Address should start with "0x"'}
                 helpTextColor={colors.base.red}
             >
-                <TextField placeholder={'Placeholder'} />
+                <TextField placeholder={'Placeholder'}/>
             </FormTextField>
         </Wrapper>
     );
@@ -151,7 +168,7 @@ const FormTextFieldComponent = () => {
 const CheckboxComponent = () => {
     return (
         <Wrapper>
-            <Label title={'Checkbox'} />
+            <Label title={'Checkbox'}/>
             <div>
                 <Checkbox
                     checked={true}
@@ -178,7 +195,7 @@ const CheckboxComponent = () => {
 const ButtonComponent = () => {
     return (
         <Wrapper>
-            <Label title={'Button'} />
+            <Label title={'Button'}/>
             <div>
                 <Button>Click</Button>
             </div>
@@ -189,18 +206,18 @@ const ButtonComponent = () => {
 
 const DropdownComponent = () => {
     const items = [
-        { label: '1st menu item', key: '0' },
-        { label: '2st menu item', key: '1' },
-        { label: '3st menu item', key: '2' },
+        {label: '1st menu item', key: '0'},
+        {label: '2st menu item', key: '1'},
+        {label: '3st menu item', key: '2'},
     ];
     return (
         <Wrapper>
-            <Label title={'Dropdown'} />
+            <Label title={'Dropdown'}/>
             <div>
-                <div style={{ display: 'flex', gap: '40px', flexWrap: 'wrap' }}>
+                <div style={{display: 'flex', gap: '40px', flexWrap: 'wrap'}}>
                     {Object.values(PLACEMENT).map((placement) => (
-                        <Dropdown placement={placement} menu={{ items, onClick: () => console.log('clicked!') }}>
-                            <Button variant={'outlined'} style={{ width: '140px' }} size={'sm'}>Click {placement}</Button>
+                        <Dropdown placement={placement} menu={{items, onClick: () => console.log('clicked!')}}>
+                            <Button variant={'outlined'} style={{width: '140px'}} size={'sm'}>Click {placement}</Button>
                         </Dropdown>
                     ))}
                 </div>
